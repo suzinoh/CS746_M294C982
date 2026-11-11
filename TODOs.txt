@@ -1,0 +1,87 @@
+===================================================================
+
+                  PROJECT IMPROVEMENT TODO LIST
+
+===================================================================
+
+
+
+[CURRENT STATUS]
+
+- Academic-Level Panel dataset successfully structured.
+
+- Training R2: 0.8595 (~86% variance explained)
+
+- Out-of-Sample Test RMSE: 0.2674
+
+
+
+-------------------------------------------------------------------
+
+1. MODEL EVALUATION & TESTING
+
+-------------------------------------------------------------------
+
+[ ] Compute Out-of-Sample Test R-squared (R2)
+
+    - Add explicit test set R2 calculation in modeling.py to prove 
+
+      the model doesn't overfit unseen data.
+
+
+
+[ ] Evaluate Lagged Variables in Regression
+
+    - Compare model performance using contemporaneous features vs. 
+
+      1-year and 2-year lags (col_lag1, col_lag2) to reflect true 
+
+      enrollment decision delays.
+
+
+
+-------------------------------------------------------------------
+
+2. DIAGNOSTICS & STATISTICAL RIGOR
+
+-------------------------------------------------------------------
+
+[ ] Check Multicollinearity (VIF Analysis)
+
+    - Compute Variance Inflation Factor (VIF) using statsmodels to 
+
+      ensure macro features (Tuition, GDP per capita, Inflation) 
+
+      are not overly collinear.
+
+
+
+[ ] Residual Analysis & Pandemic Shock Handling
+
+    - Plot actual vs. predicted values across time.
+
+    - Test adding a COVID-19 dummy variable (1 for 2020-2021) 
+
+      to absorb structural disruptions during pandemic years.
+
+
+
+-------------------------------------------------------------------
+
+3. DOCUMENTATION & CLEANUP
+
+-------------------------------------------------------------------
+
+[ ] Export Final Summary Tables & Diagnostic Plots
+
+    - Save model summary outputs and residual plots to an /outputs 
+
+      folder for the final report.
+
+
+
+[ ] Push Final Changes to GitHub
+
+    - Verify git status, commit updated feature_eng.py & modeling.py.
+
+===================================================================

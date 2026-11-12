@@ -62,6 +62,10 @@ Estimates a single intercept across all data without accounting for differences 
 - **Quantitative Improvements & Statistical Significance:**
   - Training $R^2$: 0.8595 (explaining ~86% of enrollment variance).
   - Out-of-Sample Test RMSE: 0.2674 (translating to high predictive accuracy on log-transformed student volumes).
+  - Hypothesis Testing H0/H1: 
+    - Overall Model Significance: The overall F-test confirms statistical significance ($p < 0.0001$), successfully rejecting the null hypothesis that macroeconomic drivers have no collective effect.
+    - Tuition Coefficient ($H_0: \beta = 0$ vs. $H_1: \beta \neq 0$): Testing the individual coefficient for U.S. tuition (log_Average_Total) yielded an estimated coefficient of 0.6785 with a two-tailed p-value of 0.0000 and a 95% confidence interval of [0.5854, 0.7716].
+    - Conclusion: We reject $H_0$ at $\alpha = 0.05$, confirming that tuition costs are a statistically significant driver of international student enrollment. A one-tailed directional test similarly confirms significance ($p = 0.0000$).
 - **Figures & Visualizations:** 
   - `figures/enrollment_trends_by_level.png`
   - `figures/nces_tuition_trends.png`
@@ -69,7 +73,7 @@ Estimates a single intercept across all data without accounting for differences 
 ---
 
 ## 4. Discussion
-- **Interpretation of Findings:** Log-log specifications allow direct interpretation of economic elasticities, showing how sensitive enrollment decisions across different academic tiers are to tuition inflation and home-country GDP shifts.
+- **Interpretation of Findings:** Log-log specifications allow direct interpretation of economic elasticities. The statistically significant tuition coefficient ($\beta = 0.6785, p < 0.0001$) indicates that a 1% increase in average U.S. tuition corresponds to a ~0.68% shift in enrollment. While standard economic theory typically expects a negative price elasticity, this positive relationship observed across the 1999–2025 period highlights how rising tuition often acts as a proxy for institutional prestige and global demand growth, or reflects students being cushioned by scholarships, aid, and sponsorships.
 - **Methodology Performance:** Academic-level fixed effects successfully isolate unobserved structural traits unique to each educational stage (e.g., undergraduate cost sensitivity versus graduate research funding reliance).
 - **Scientific Contributions & Practical Applications:** Demonstrates that structural panel design outperforms global aggregate modeling in higher education forecasting, offering university administrators a reliable tool for enrollment planning and tuition pricing strategy.
 - **Limitations & Challenges:** Unmeasured external shocks such as visa processing backlogs, sudden geopolitical shifts, and post-graduation policy changes (e.g., OPT rules) remain uncaptured by macroeconomic indicators alone.
@@ -90,6 +94,6 @@ Estimates a single intercept across all data without accounting for differences 
   - Exploratory data analysis (`eda.py`)
   - Panel feature engineering & lagging (`feature_eng.py`)
   - Econometric modeling (`modeling.py`)
-- **Ongoing Activities:** Report drafting and finalizing regression tables.
-- **Expected Deliverables:** Reproducible Python codebase, processed panel dataset, and final research report.
-- **Next Milestones:** Submission of final project deliverable.
+- **Ongoing Activities:** Report drafting and finalizing regression tables, maybe exploring different perspective using the data?
+- **Expected Deliverables:** Reproducible Python codebase that can be utilized for predicting the affects of the enrollment of international students, processed panel dataset, and final research report.
+- **Next Milestones:** Trying different factors as the deciding characteristics, further exploring if there is any further data cleaning / harmonizing that can be done to improve the model prediction.

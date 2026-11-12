@@ -1,5 +1,5 @@
 # ==========================================
-# FILE: eda.py
+# FILE: exploratory_data_analysis.py
 # PURPOSE: Exploratory Data Analysis (EDA) and 
 #          trend visualization for international 
 #          student mobility and economic drivers.

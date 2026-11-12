@@ -27,9 +27,9 @@ def harmonize_country_identifiers(academic_level_df, WDICountry_clean):
 
 def build_panel_dataset(academic_level_df, cost1_df, WDICountry_clean, IMF_clean, drvcost_df, drvef_df, tabn330_df):
     """
-    TODO: 2. Construct Master Panel Dataset
-    - Merge IIE Open Doors enrollment data, IMF macroeconomic indicators (GDP per capita, CPI), 
-      and NCES tuition averages into a unified panel indexed by [Country_Code, Academic_Level, Year].
+    TODO: 2. Construct Master Panel Dataset (Adapted for Academic-Level Panel)
+    - Merge IIE Open Doors enrollment data, IMF/WDI macroeconomic indicators (GDP per capita, CPI), 
+      and NCES tuition averages into a unified panel indexed by [Entity_ID, Year_Start].
     """
     print("--- Constructing Master Panel Dataset ---")
     
@@ -58,19 +58,27 @@ def build_panel_dataset(academic_level_df, cost1_df, WDICountry_clean, IMF_clean
         how="left"
     )
     
-    # 3. Merge macroeconomic drivers from IMF_clean (GDP per capita, CPI inflation)
-    # Assuming IMF_clean has columns like ['Country_Code', 'Year', 'NGDPDPC', 'PCPIE']
-    if not IMF_clean.empty and "Country_Code" in IMF_clean.columns:
+    # 3. Merge macroeconomic drivers from IMF_clean (GDP per capita, CPI inflation) on Year_Start
+    # Since this is an academic-level panel, macro indicators apply temporally across all tiers.
+    if not IMF_clean.empty and "Year_Start" in IMF_clean.columns:
         panel_df = pd.merge(
             panel_df,
             IMF_clean,
-            on=["Country_Code", "Year_Start"],
+            on="Year_Start",
+            how="left"
+        )
+    elif not IMF_clean.empty and "Year" in IMF_clean.columns:
+        # Fallback if IMF_clean uses 'Year' instead of 'Year_Start'
+        IMF_clean["Year_Start"] = pd.to_numeric(IMF_clean["Year"].astype(str).str.slice(0, 4), errors="coerce")
+        panel_df = pd.merge(
+            panel_df,
+            IMF_clean,
+            on="Year_Start",
             how="left"
         )
     
     print(f"Master panel shape after merging: {panel_df.shape}")
     return panel_df
-
 
 def apply_lags_and_transformations(panel_df):
     """

@@ -1,3 +1,7 @@
+# ==========================================
+# FILE: get_data.py
+# PURPOSE: read and preprocess IIE Open Doors enrollment, IMF/WDI macroeconomic indicators, and NCES tuition data for feature engineering.
+# ==========================================
 # Research Problem / Problem Statement
 # Recently, shift in number of international students in the country has been observed to be changing dramatically. While there are extensive studies aggregating enrollment counts, very few studies have discussed how the economic factors that impact the decrease/increase of enrollment numbers. This project will identify and quantify the external structural drivers that governs international student mobility across the degree levels and primary origin countries. This study will pay attention to economic factors only.
 #

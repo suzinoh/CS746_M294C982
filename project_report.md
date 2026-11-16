@@ -24,6 +24,20 @@ __Suzin Oh / M294C982__
 
 ### 2.1 Dataset
 - **Dataset Name & Source:** IIE Open Doors, US Dept of State Visa Stats, World Bank WDI, IMF, NCES IPEDS.
+1. IIE Open Doors Tabular Data; country-level annal enrollment breakdowns by academic level
+  link: https://opendoorsdata.org/?download=https://opendoorsdata.org/wp-content/uploads/2025/11/Census_Academic-Level_OD25_Website.xlsx
+  for historican data INTERNATIONAL STUDENTS BY DETAILED ACADEMIC LEVEL, 1999/00 - 2024/25
+2. US Department of state visa statistics; shows monthly F-1 visa issuance and refual logs per embassy
+  link: way to calculate the refusal https://travel.state.gov/content/travel/en/legal/visa-law0/visa-statistics/nonimmigrant-visa-statistics/nonimmigrant-b-visa-adjusted-refusal-rates-by-nationality.html
+  link: for pdfs (need to process it) https://travel.state.gov/content/travel/en/legal/visa-law0/visa-statistics/nonimmigrant-visa-statistics/monthly-nonimmigrant-visa-issuances.html
+3. World Bank & IMF Macroeconomic Indicators : country-level economic indicators such as foreign GDP per capita,    USD exchange rate, local CPI inflation
+  link: (downloaded in data/WDI_CSV) https://datatopics.worldbank.org/world-development-indicators/
+  core repository for country-level GDP per capita (constant USD), local consumer price index (CPI) inflation, and exchange rates.
+  link: IMF.csv https://data.imf.org/en/Data-Explorer?datasetUrn=IMF.RES:WEO(9.0.0)
+4. NCES Database; average tuition costs, institutional characteristics across U.S. host regions
+  link: https://nces.ed.gov/ipeds/Search?query=tuition&query2=tuition&resultType=table&page=2&sortBy=relevance&overlayDigestTableId=202676
+  link: https://nces.ed.gov/ipeds/datacenter/DataFiles.aspx?year=-1&surveyNumber=19&sid=6374a433-25ff-46bd-939c-5f5c4c3efe96&rtid=7 
+
 - **Dataset Description:** A panel dataset tracking international student enrollment volumes across distinct academic levels (Freshman, Sophomore, Junior, Senior, Graduate, etc.) matched with annual macroeconomic indicators and tuition benchmarks over multiple years.
   
 - **Data Collection:** Publicly available panel datasets compiled and merged via an automated Python ingestion pipeline (see file `get_data.py`).
@@ -91,9 +105,27 @@ Estimates a single intercept across all data without accounting for differences 
 - **Current Status:** Model Evaluation & Final Report Preparation.
 - **Completed Milestones:**
   - Data ingestion pipeline (`get_data.py`)
-  - Exploratory data analysis (`eda.py`)
+  - Exploratory data analysis (`exploratory_data_analysis.py`)
   - Panel feature engineering & lagging (`feature_eng.py`)
   - Econometric modeling (`modeling.py`)
-- **Ongoing Activities:** Report drafting and finalizing regression tables, maybe exploring different perspective using the data?
+  - Hypothesis Testing (`hypothesis_test.py`)
+- **Ongoing Activities:** Report drating and finalizing regression tables, maybe exploring different perspective using the data?
 - **Expected Deliverables:** Reproducible Python codebase that can be utilized for predicting the affects of the enrollment of international students, processed panel dataset, and final research report.
 - **Next Milestones:** Trying different factors as the deciding characteristics, further exploring if there is any further data cleaning / harmonizing that can be done to improve the model prediction.
+---
+
+## 7. File List
+
+### 7.1 Main Working Files
+- exploratory_data_analysis.py
+- feature_eng.py
+- get_data.py
+- hypothesis_test.py
+- main.py
+- modeling.py
+
+   
+### 7.2 Experimental Files
+Following files are for experimenting different feature extractions from different dfs. 
+- feature_eng_enrollement.py
+- feature_eng_ipeds.py

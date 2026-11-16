@@ -1,5 +1,6 @@
 # Quantifying the Impact of Economic Shocks and Tuition Costs on Cross-Border Student Flows
 __Suzin Oh / M294C982__
+github link; https://github.com/suzinoh/CS746_M294C982
 
 ## 1. Research Objectives
 - **Primary Research Problem & Significance:** 
